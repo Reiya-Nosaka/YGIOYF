@@ -44,7 +44,7 @@ public class Bomb : MonoBehaviour {
 		{
 			// ブロックとの当たり判定の結果を格納する変数
 			RaycastHit hit;
-			Debug.Log ("loop"+direction+i);
+			//Debug.Log ("loop"+direction+i);
 			// 爆風を広げた先に何か存在するか確認
 			Physics.Raycast
 			(
@@ -54,6 +54,7 @@ public class Bomb : MonoBehaviour {
 				i,
 				levelMask
 			);
+
 
 			// 爆風を広げた先に何も存在しない場合
 			if ( !hit.collider )
