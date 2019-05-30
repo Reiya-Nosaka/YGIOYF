@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
 	//Prefabs
 	public GameObject bombPrefab;
+	public GameObject PlayerObj;
 
 	//Cached components
 	private Rigidbody rigidBody;
@@ -167,9 +168,14 @@ public class Player : MonoBehaviour
 		if (other.CompareTag ("Explosion"))
 		{
 			Debug.Log ("P" + playerNumber + " hit by explosion!");
-			dead = true;
-			//globalManager.PlayerDied (playerNumber);
-			Destroy (gameObject);
+			//爆発に当たって数秒固まる
+			this.gameObject.GetComponent<Player> ().enabled = false;
+			Invoke ("Release", 2.0f);
 		}
 	}
+	void Release(){
+		//フリーズからの解放
+		this.gameObject.GetComponent<Player> ().enabled = true;
+	}
+
 }
