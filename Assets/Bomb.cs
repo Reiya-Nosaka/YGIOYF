@@ -10,6 +10,8 @@ public class Bomb : MonoBehaviour {
 	public int bombarea = 3;
 	// Use this for initialization
 	void Start () {
+		GetComponent<BoxCollider> ().enabled = false;
+		Invoke ("ChangeCollider",0.5f);
 		Invoke ("Explode", 3f);
 
 	}
@@ -88,6 +90,15 @@ public class Bomb : MonoBehaviour {
 
 			// 爆発する
 			Explode();
+		}
+	}
+	private void ChangeCollider(){
+		//colliderの判定を反転させる
+		if (GetComponent<BoxCollider> ().enabled) {
+			GetComponent<BoxCollider> ().enabled = false;
+		} 
+		else {
+			GetComponent<BoxCollider> ().enabled = true;
 		}
 	}
 }
